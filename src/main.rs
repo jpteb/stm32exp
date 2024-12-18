@@ -13,7 +13,6 @@ use embassy_stm32::{
     dma::NoDma,
     exti::ExtiInput,
     gpio::{AnyPin, Input, Level, Output, Pin, Pull, Speed},
-    spi::{Config as SpiConfig, Instance, Spi},
     usart::{Config as UsartConfig, UartTx},
 };
 use embassy_time::{Duration, Timer};
