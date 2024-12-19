@@ -7,12 +7,12 @@
       ...
     }:
     let
-      crateName = "stm32exp";
+      crateName = "remap";
     in
     {
       nci.toolchainConfig = ./rust-toolchain.toml;
       # declare projects
-      nci.projects."stm32exp".path = ./.;
+      nci.projects."remap".path = ./.;
       # configure crates
       nci.crates.${crateName} = { };
     };
