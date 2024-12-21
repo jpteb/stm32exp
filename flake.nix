@@ -37,24 +37,26 @@
         let
           # shorthand for accessing this crate's outputs
           # you can access crate outputs under `config.nci.outputs.<crate name>` (see documentation)
-          crateOutputs = config.nci.outputs."stm32exp";
+          crateOutputs = config.nci.outputs."stm32g474re";
         in
         {
           treefmt = {
             projectRootFile = "flake.nix";
             programs.rustfmt.enable = true;
             programs.nixfmt.enable = true;
-            programs.toml-sort.enable = true;
           };
           formatter = config.treefmt.build.wrapper;
 
           # export the crate devshell as the default devshell
           devShells.default = crateOutputs.devShell.overrideAttrs (old: {
-            packages = with pkgs; (old.packages or [ ]) ++ [
-              minicom
-              probe-rs-tools
-              stlink
-            ];
+            packages =
+              with pkgs;
+              (old.packages or [ ])
+              ++ [
+                minicom
+                probe-rs-tools
+                stlink
+              ];
           });
           # export the release package of the crate as default package
           packages.default = crateOutputs.packages.release;

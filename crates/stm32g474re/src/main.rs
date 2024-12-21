@@ -13,7 +13,7 @@ use embassy_stm32::{
     time::Hertz,
     usart::{Config as UsartConfig, UartTx},
 };
-use embassy_time::{Delay, Duration, Timer};
+use embassy_time::{Duration, Timer};
 use heapless::String;
 use {defmt_rtt as _, panic_probe as _};
 
@@ -66,9 +66,7 @@ async fn main(spawner: Spawner) {
         Err(e) => error!("i2c error: {:?}", e),
     }
     match i2c.blocking_write(ADDRESS, &[PWR_MGMT_1, POWERUP]) {
-        Ok(()) => info!(
-            "Successfully powered up the chip",
-        ),
+        Ok(()) => info!("Successfully powered up the chip",),
         Err(e) => error!("failed to power up the chip: {:?}", e),
     }
 

@@ -1,5 +1,5 @@
 [toolchain]
 channel = "nightly"
 profile = "minimal"
-components = [ "rust-src", "rustfmt", "rust-analyzer", "llvm-tools", "miri" ]
-targets = ["thumbv7em-none-eabi"]
+components = ["rust-src", "rustfmt", "rust-analyzer", "llvm-tools", "miri"]
+targets = ["thumbv7em-none-eabi", "thumbv7em-none-eabihf"]
